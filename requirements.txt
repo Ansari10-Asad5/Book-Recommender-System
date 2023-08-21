@@ -1,0 +1,5 @@
+Libraries Required
+
+Pandas
+NumPy
+Scikit-Learn

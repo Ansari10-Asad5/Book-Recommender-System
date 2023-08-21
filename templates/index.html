@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommender System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+  }
+  nav {
+    background-color: #333;
+    padding: 0.5rem 0;
+    text-align: center;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1.5rem;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+  }
+  nav a:hover {
+    color: #ff9900;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  .book {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    display: flex;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+  .book:hover {
+    transform: translateY(-5px);
+  }
+  .book img {
+    max-width: 120px;
+    height: auto;
+    margin-right: 1.5rem;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .book-info {
+    flex: 1;
+  }
+  .book-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  .book-author {
+    font-size: 1.2rem;
+    color: #666;
+  }
+  .book-description {
+    margin-top: 1rem;
+    color: #444;
+  }
+</style>
+</head>
+
+
+<body>
+    <header>
+        <h1>My Book Recommender</h1>
+    </header>
+    <nav class="navbar">
+        <ul class = "nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/recommend">Recommend</a></li>
+    </ul>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="class-12">
+                <h1 style="font-size:50px">Top 100 Books</h1>
+                <div class="sorting">
+                  <form action="/sort" method="post">
+                    <label for="sortOption">Sort by:</label>
+                    <select id="sortOption" name="sortOption">
+                      <option value="year">Year of Publication</option>
+                      <option value="rating">Book Rating</option>
+                      <option value="popular">Most Popular</option>
+                    </select>
+                    <button class="sort-button" type="submit">Sort</button>
+                  </form>
+                </div>
+            </div>
+
+            {% for i in range(book_name|length)%}
+            <div class=book style="margin-top:50px">
+                <div>
+                    <div class="card-body">
+                        <img class="card-img-top" src="{{ image[i] }}">
+                        <p>{{book_name[i]}}</p>
+                        <p class ="text-red">Author: {{author[i]}}</p>
+                        <p>Rating: {{ratings[i]}}</p>
+                        <p>Number of Votes: {{votes[i]}}</p>
+                        <p>publisher: {{publisher[i]}}</p>
+                        <p>Year Of Publication: {{year[i]}}</p>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+
+        </div>
+    </div>
+</body>
+</html>
